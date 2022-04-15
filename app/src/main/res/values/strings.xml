@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Resistor Value Calculator</string>
+    <string-array name="figure_values">
+        <item><font bgcolor='#000000' fgcolor='#FFFFFF'>Black</font></item>
+        <item><font bgcolor='#800000' fgcolor='#FFFFFF'>Brown</font></item>
+        <item><font bgcolor='#FF0000'>Red</font></item>
+        <item><font bgcolor='#FFA500'>Orange</font></item>
+        <item><font bgcolor='#FFFF00'>Yellow</font></item>
+        <item><font bgcolor='#00FF00'>Green</font></item>
+        <item><font bgcolor='#0000FF' fgcolor='#FFFFFF'>Blue</font></item>
+        <item><font bgcolor='#800080' fgcolor='#FFFFFF'>Violet</font></item>
+        <item><font bgcolor='#808080'>Grey</font></item>
+        <item><font bgcolor='#FFFFFF'>White</font></item>
+    </string-array>
+    <string-array name="multiplier_values">
+        <item><font bgcolor='#000000' fgcolor='#FFFFFF'>Black</font></item>
+        <item><font bgcolor='#800000' fgcolor='#FFFFFF'>Brown</font></item>
+        <item><font bgcolor='#FF0000'>Red</font></item>
+        <item><font bgcolor='#FFA500'>Orange</font></item>
+        <item><font bgcolor='#FFFF00'>Yellow</font></item>
+        <item><font bgcolor='#00FF00'>Green</font></item>
+        <item><font bgcolor='#0000FF' fgcolor='#FFFFFF'>Blue</font></item>
+        <item><font bgcolor='#800080' fgcolor='#FFFFFF'>Violet</font></item>
+        <item><font bgcolor='#808080'>Grey</font></item>
+        <item><font bgcolor='#FFFFFF'>White</font></item>
+        <item><font bgcolor='#D4AF37'>Gold</font></item>
+        <item><font bgcolor='#AAA9AD'>Silver</font></item>
+    </string-array>
+    <string-array name="tolerance_values">
+        <item><font bgcolor='#800000' fgcolor='#FFFFFF'>Brown</font></item>
+        <item><font bgcolor='#FF0000'>Red</font></item>
+        <item><font bgcolor='#00FF00'>Green</font></item>
+        <item><font bgcolor='#0000FF' fgcolor='#FFFFFF'>Blue</font></item>
+        <item><font bgcolor='#800080' fgcolor='#FFFFFF'>Violet</font></item>
+        <item><font bgcolor='#808080'>Grey</font></item>
+        <item><font bgcolor='#D4AF37'>Gold</font></item>
+        <item><font bgcolor='#AAA9AD'>Silver</font></item>
+        <item><font bgcolor='#FFFFFF'>None</font></item>
+    </string-array>
+</resources>
