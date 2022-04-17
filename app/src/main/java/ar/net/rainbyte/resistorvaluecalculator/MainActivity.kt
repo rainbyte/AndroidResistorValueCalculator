@@ -23,18 +23,20 @@ class MainActivity : Activity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    var figure1: Int = 0
     var figure2: Int = 0
     var figure3: Int = 0
     var multiplier: Float = 0f
     var multiplierTag: String = ""
     var tolerance: Float = 0f
+    var temperature: Int = 0
 
     private fun updateResistorValue() {
-        val base = figure2 * 10 + figure3
+        val base = figure1 * 100 + figure2 * 10 + figure3
         val resistorValue = base * multiplier
         val resistorValueFormat = if (resistorValue % 1.0 != 0.0) { "%s" } else { "%.0f" }
         val resistorValueString = String.format(resistorValueFormat, resistorValue)
-        binding.textviewResistorValue.text = "${resistorValueString} ${multiplierTag}Ω ±${tolerance}%"
+        binding.textviewResistorValue.text = "${resistorValueString} ${multiplierTag}Ω ±${tolerance}% ${temperature}ppm"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +47,14 @@ class MainActivity : Activity() {
 
         val multiplierValues: Array<String> = resources.getStringArray(R.array.multiplier_values)
         val toleranceValues: Array<String> = resources.getStringArray(R.array.tolerance_values)
+        val temperatureValues: Array<String> = resources.getStringArray(R.array.temperature_values)
+
+        val figure1Adapter = ArrayAdapter.createFromResource(this, R.array.figure_values, android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerFigure1.adapter = figure1Adapter
+        binding.spinnerFigure1.selected {
+            figure1 = it
+            updateResistorValue()
+        }
 
         val figure2Adapter = ArrayAdapter.createFromResource(this, R.array.figure_values, android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerFigure2.adapter = figure2Adapter
@@ -97,6 +107,19 @@ class MainActivity : Activity() {
                 "Silver" -> 10f
                 "None"   -> 20f
                 else     -> 0f
+            }
+            updateResistorValue()
+        }
+
+        val temperatureAdapter = ArrayAdapter.createFromResource(this, R.array.temperature_values, android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerTemperature.adapter = temperatureAdapter
+        binding.spinnerTemperature.selected {
+            temperature = when (temperatureValues[it]) {
+                "Brown"  -> 100
+                "Red"    -> 50
+                "Orange" -> 15
+                "Yellow" -> 25
+                else     -> 0
             }
             updateResistorValue()
         }
