@@ -1,13 +1,11 @@
 package ar.net.rainbyte.resistorvaluecalculator
 
 import android.app.Activity
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.TextView
 import ar.net.rainbyte.resistorvaluecalculator.databinding.ActivityMainBinding
 
 class MainActivity : Activity() {
@@ -22,6 +20,7 @@ class MainActivity : Activity() {
     }
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var resistorValueTemplate: String
 
     var figure1: Int = 0
     var figure2: Int = 0
@@ -36,7 +35,7 @@ class MainActivity : Activity() {
         val resistorValue = base * multiplier
         val resistorValueFormat = if (resistorValue % 1.0 != 0.0) { "%s" } else { "%.0f" }
         val resistorValueString = String.format(resistorValueFormat, resistorValue)
-        binding.textviewResistorValue.text = "${resistorValueString} ${multiplierTag}Ω ±${tolerance}% ${temperature}ppm"
+        binding.textviewResistorValue.text = String.format(resistorValueTemplate, resistorValueString, multiplierTag, tolerance, temperature)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +47,7 @@ class MainActivity : Activity() {
         val multiplierValues: Array<String> = resources.getStringArray(R.array.multiplier_values)
         val toleranceValues: Array<String> = resources.getStringArray(R.array.tolerance_values)
         val temperatureValues: Array<String> = resources.getStringArray(R.array.temperature_values)
+        resistorValueTemplate = resources.getString(R.string.resistor_value_template)
 
         val figure1Adapter = ArrayAdapter.createFromResource(this, R.array.figure_values, android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerFigure1.adapter = figure1Adapter

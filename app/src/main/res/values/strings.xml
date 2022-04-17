@@ -43,4 +43,5 @@
         <item><font bgcolor='#FFA500'>Orange</font></item>
         <item><font bgcolor='#FFFF00'>Yellow</font></item>
     </string-array>
+    <string name="resistor_value_template">%s %sΩ ±%.2f%% %dppm</string>
 </resources>
