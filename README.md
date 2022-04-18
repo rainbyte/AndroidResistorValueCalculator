@@ -2,7 +2,7 @@
 
 This Android app is able to find resistor value based on band colours.
 
-Currently it only supports 4-bands resistors.
+Currently it supports 4, 5 and 6 bands resistors.
 
 ## License
 
