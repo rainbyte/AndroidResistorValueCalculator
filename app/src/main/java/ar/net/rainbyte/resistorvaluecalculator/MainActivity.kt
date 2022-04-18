@@ -29,13 +29,38 @@ class MainActivity : Activity() {
     var multiplierTag: String = ""
     var tolerance: Float = 0f
     var temperature: Int = 0
+    var bands: Int = 4
 
     private fun updateResistorValue() {
-        val base = figure1 * 100 + figure2 * 10 + figure3
+        val base = if (bands > 4) figure1 * 100 else 0 + figure2 * 10 + figure3
         val resistorValue = base * multiplier
         val resistorValueFormat = if (resistorValue % 1.0 != 0.0) { "%s" } else { "%.0f" }
         val resistorValueString = String.format(resistorValueFormat, resistorValue)
-        binding.textviewResistorValue.text = String.format(resistorValueTemplate, resistorValueString, multiplierTag, tolerance, temperature)
+        binding.textviewResistorValue.text = (if (bands == 6) String.format(
+            resistorValueTemplate,
+            resistorValueString,
+            multiplierTag,
+            tolerance,
+            temperature
+        )
+        else String.format(
+            resistorValueTemplate,
+            resistorValueString,
+            multiplierTag,
+            tolerance,
+            temperature
+        )).toString()
+    }
+
+    private fun updateBands() {
+        if (bands < 6) {
+            binding.spinnerTemperature.visibility = View.GONE
+            if (bands < 5) binding.spinnerFigure1.visibility = View.GONE else binding.spinnerFigure1.visibility = View.VISIBLE
+            resistorValueTemplate = resources.getString(R.string.resistor_value_template)
+        } else {
+            binding.spinnerTemperature.visibility = View.VISIBLE
+            resistorValueTemplate = resources.getString(R.string.resistor_value_template_temperature)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +72,7 @@ class MainActivity : Activity() {
         val multiplierValues: Array<String> = resources.getStringArray(R.array.multiplier_values)
         val toleranceValues: Array<String> = resources.getStringArray(R.array.tolerance_values)
         val temperatureValues: Array<String> = resources.getStringArray(R.array.temperature_values)
+        val bandValues: Array<String> = resources.getStringArray(R.array.band_values)
         resistorValueTemplate = resources.getString(R.string.resistor_value_template)
 
         val figure1Adapter = ArrayAdapter.createFromResource(this, R.array.figure_values, android.R.layout.simple_spinner_dropdown_item)
@@ -121,6 +147,19 @@ class MainActivity : Activity() {
                 "Yellow" -> 25
                 else     -> 0
             }
+            updateResistorValue()
+        }
+
+        val bandsAdapter = ArrayAdapter.createFromResource(this, R.array.band_values, android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerBands.adapter = bandsAdapter
+        binding.spinnerBands.selected {
+            bands = when (bandValues[it]) {
+                "4 bands" -> 4
+                "5 bands" -> 5
+                "6 bands" -> 6
+                else -> 4
+            }
+            updateBands()
             updateResistorValue()
         }
     }

@@ -43,5 +43,11 @@
         <item><font bgcolor='#FFA500'>Orange</font></item>
         <item><font bgcolor='#FFFF00'>Yellow</font></item>
     </string-array>
-    <string name="resistor_value_template">%s %sΩ ±%.2f%% %dppm</string>
+    <string name="resistor_value_template_temperature">%s %sΩ ±%.2f%% %dppm</string>
+    <string name="resistor_value_template">%s %sΩ ±%.2f%%</string>
+    <string-array name="band_values">
+        <item>4 bands</item>
+        <item>5 bands</item>
+        <item>6 bands</item>
+    </string-array>
 </resources>
