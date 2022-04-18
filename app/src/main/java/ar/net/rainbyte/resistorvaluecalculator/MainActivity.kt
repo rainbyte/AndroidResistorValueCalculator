@@ -74,6 +74,8 @@ class MainActivity : Activity() {
         val temperatureValues: Array<String> = resources.getStringArray(R.array.temperature_values)
         val bandValues: Array<String> = resources.getStringArray(R.array.band_values)
         resistorValueTemplate = resources.getString(R.string.resistor_value_template)
+        binding.spinnerTemperature.visibility = View.GONE
+        binding.spinnerFigure1.visibility = View.GONE
 
         val figure1Adapter = ArrayAdapter.createFromResource(this, R.array.figure_values, android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerFigure1.adapter = figure1Adapter
