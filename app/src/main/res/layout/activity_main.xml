@@ -16,9 +16,8 @@
             android:id="@+id/spinnerBands"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
         <Spinner
-            android:id="@+id/spinnerFigure1"
+            android:id="@+id/spinnerFigure3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Spinner
@@ -26,9 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Spinner
-            android:id="@+id/spinnerFigure3"
+            android:id="@+id/spinnerFigure1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+
         <Spinner
             android:id="@+id/spinnerMultiplier"
             android:layout_width="wrap_content"
